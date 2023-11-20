@@ -1,0 +1,54 @@
+.btn{
+    width: 50px;
+    height: 50px;
+    margin: 1px;
+    margin-bottom: 3px;
+    color: #070000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    b
+    
+}
+.btn:active{
+    transform: scale(0.9);
+}
+#operators{
+    color: #ff002b;
+    background-color: rgba(39, 209, 158, 0.486);
+    border-radius: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    
+   
+}
+#deletD{
+    background-color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    
+}
+#Calcshit{
+    font-family: serif ;
+    border-radius: 20px;
+    margin-right: 50%;
+    width: 240px;
+    height: 50px;
+    margin: 2px;
+    
+}
+.calculator {
+    width: 270px;
+    height: 390px;
+    background: linear-gradient( #00C9FF 0%, #92FE9D 100%);
+    border-radius: 10px;
+    outline-color: black;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0 0 10px #fff;
+    padding: 10px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    text-align: right;
+    border: 3px solid rgb(48, 156, 206);
+    
+}

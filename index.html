@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+    <audio id="operSound" src="mixkit-modern-click-box-check-1120.wav"></audio>
+    <audio id="clicksound" src="mixkit-cool-interface-click-tone-2568.wav"></audio>
+    <audio id="calcsound" src="mixkit-modern-technology-select-3124.wav"></audio>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="calculator" style="margin-left: 45%; margin-top: 10%; background-size: 5px;">
+        <input id="res" value="0" maxlength="10" style="text-align: right; background-color: rgb(169, 204, 188);
+    font-size: 1vw; user-select: none; margin-bottom: 10px; border-radius: 7px;" readonly><br>
+
+        <button onclick="add_num(7)" class="btn btn-outline-secondary col">7</button>
+        <button onclick="add_num(8)" class="btn btn-outline-secondary col">8</button>
+        <button onclick="add_num(9)" class="btn btn-outline-secondary col">9</button>
+        <button onclick="do_math('+')" class="btn btn-outline-primary col" id="operators">+</button>
+        <br>
+        <button onclick="add_num(4)" class="btn btn-outline-secondary col">4</button>
+        <button onclick="add_num(5)" class="btn btn-outline-secondary col">5</button>
+        <button onclick="add_num(6)" class="btn btn-outline-secondary col">6</button>
+        <button onclick="do_math('-')" class="btn btn-outline-primary col" id="operators">-</button>
+        <br>
+        <button onclick="add_num(1)" class="btn btn-outline-secondary col">1</button>
+        <button onclick="add_num(2)" class="btn btn-outline-secondary col">2</button>
+        <button onclick="add_num(3)" class="btn btn-outline-secondary col">3</button>
+        <button onclick="do_math('X')" class="btn btn-outline-primary col" id="operators">X</button>
+        <br>
+        <button onclick="add_num(0)" class="btn btn-outline-secondary col">0</button>
+        <button onclick="deleteDigit()" class="btn btn-outline-secondary col" id="deletD">DEL</button>
+
+        <button onclick="clear_result()" class="btn btn-outline-primary col" id>c</button>
+        <button onclick="do_math('/')" class="btn btn-outline-primary col" id="operators">/</button>
+        <br>
+        <button onclick="do_math('M-')" class="btn btn-outline-primary col" id="operators">M-</button>
+        <button onclick="do_math('M+')" class="btn btn-outline-primary col" id="operators">M+</button>
+        <button onclick="do_math('√')" class="btn btn-outline-primary col" id="operators">√</button>
+        <button onclick="do_math('^')" class="btn btn-outline-primary col" id="operators">^</button>
+        <button onclick="calc('=')" class="btn btn-outline-primary col" id="Calcshit">=</button>
+        <script>
+            var num1 = 0
+            var clear_flag = false
+            var oper = ""
+            var sound = document.getElementById("operSound");
+            var clicksound = document.getElementById("clicksound");
+            var calcsound = document.getElementById("calcsound");
+
+            function deleteDigit() {
+                res.value = res.value.slice(0, -1);
+                if (res.value == "") {
+                    res.value = "0"
+                }
+            }
+
+            function do_math(op) {
+                num1 = res.value
+                clear_flag = true
+                oper = op
+                sound.play()
+            }
+            function calc() {
+                calcsound.play()           
+                if (oper == "+")
+                    res.value = parseInt(num1) + parseInt(res.value)
+                else if (oper == "-")
+                    res.value = parseInt(num1) - parseInt(res.value)
+                else if (oper == "X")
+                    res.value = parseInt(num1) * parseInt(res.value)
+                else if (oper == "/")
+                    res.value = parseInt(num1) / parseInt(res.value)
+                else if (oper == "^")
+                    res.value = Math.pow(parseInt(num1), parseInt(res.value))
+                else if (oper == "M+") {
+                    res.value = parseInt(num1) + parseInt(res.value)
+                    num1 = res.value
+                }
+                else if (oper == "M-") { res.value = parseInt(num1) - parseInt(res.value) }
+                else if (oper == "√") { res.value = Math.sqrt(parseInt(num1)) }
+
+
+                clear_flag = true
+            }
+            function clear_result() {
+                res.value = "0"
+                num1 = 0
+
+            }
+            function add_num(new_digit) {
+                clicksound.play()
+                if (clear_flag == true) {
+                    res.value = "";
+                    clear_flag = false
+
+                }
+                if (res.value == "0") {
+                    res.value = "";
+                }
+
+                if (res.value.length < 10) {
+                    res.value += new_digit;
+                }
+            }
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>
